@@ -1,0 +1,12 @@
+# Flask Configuration
+PORT=5000
+DEBUG=True
+
+# Email Configuration (Gmail)
+# Get your Gmail App Password from: https://myaccount.google.com/apppasswords
+EMAIL_USERNAME=your-email@gmail.com
+EMAIL_PASSWORD=your-gmail-app-password
+
+# Recipient Email (defaults to EMAIL_USERNAME if not set)
+RECIPIENT_EMAIL=nitesh.nandan.ai@gmail.com
+
