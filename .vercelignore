@@ -1,0 +1,46 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# Virtual environments
+.venv
+venv
+env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local files
+contact_submissions/
+.env
+.env.local
+preview_email.html
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+REFACTORING_SUMMARY.md
+preview_template.py
+
+# UV lock file
+uv.lock
+.python-version
+

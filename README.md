@@ -220,6 +220,25 @@ To run in debug mode:
 DEBUG=True python main.py
 ```
 
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+This project is configured for easy deployment to Vercel:
+
+1. Push to GitHub
+2. Import to Vercel Dashboard
+3. Set environment variables
+4. Deploy!
+
+See **[DEPLOYMENT.md](DEPLOYMENT.md)** for detailed deployment instructions.
+
+### Quick Deploy Button
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nitesh-Nandan/my-mailer)
+
+**Note:** On Vercel, file storage (`contact_submissions/`) won't persist. Email notifications will work fine. For production, consider using a database.
+
 ## License
 
 MIT

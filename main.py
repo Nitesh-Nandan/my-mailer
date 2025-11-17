@@ -8,6 +8,8 @@ from src.services import ContactService
 app = Flask(__name__)
 CORS(app)
 
+# Note: The 'app' variable is used by Vercel for serverless deployment
+
 # Simple Swagger configuration
 app.config['SWAGGER'] = {
     'title': 'My Mailer API',
