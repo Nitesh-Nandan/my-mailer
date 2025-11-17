@@ -3,8 +3,6 @@
 Contact form service for handling submissions and notifications.
 """
 
-import json
-import os
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Tuple
@@ -14,19 +12,10 @@ from .email_sender import EmailSender
 class ContactService:
     """Service for handling contact form submissions."""
     
-    def __init__(self, data_dir: str = "contact_submissions"):
-        """
-        Initialize ContactService.
-        
-        Args:
-            data_dir: Directory to store contact submissions
-        """
-        self.data_dir = data_dir
+    def __init__(self):
+        """Initialize ContactService."""
         self.email_sender = EmailSender()
         self.template_dir = Path(__file__).parent.parent / "email_templates"
-        
-        # Create data directory if it doesn't exist
-        os.makedirs(self.data_dir, exist_ok=True)
     
     def process_submission(
         self,
@@ -62,11 +51,11 @@ class ContactService:
                 'ip_address': ip_address
             }
             
-            # Save to file
-            submission_id = self._save_submission(submission)
-            
             # Send email notification
             email_sent = self._send_notification(submission)
+            
+            # Generate submission ID from timestamp
+            submission_id = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
             
             return True, {
                 'success': True,
@@ -80,24 +69,6 @@ class ContactService:
                 'success': False,
                 'error': f'Failed to process submission: {str(e)}'
             }
-    
-    def _save_submission(self, submission: Dict) -> str:
-        """
-        Save submission to JSON file.
-        
-        Args:
-            submission: Submission data dictionary
-            
-        Returns:
-            Submission ID (filename without extension)
-        """
-        filename = f"{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}.json"
-        filepath = os.path.join(self.data_dir, filename)
-        
-        with open(filepath, 'w') as f:
-            json.dump(submission, f, indent=2)
-        
-        return filename.replace('.json', '')
     
     def _send_notification(self, submission: Dict) -> bool:
         """

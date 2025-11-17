@@ -211,7 +211,9 @@ my-mailer/
 
 ## Data Storage
 
-Contact submissions are saved to `contact_submissions/` directory as JSON files with timestamp-based filenames.
+Contact submissions are **sent via email only** - no local file storage. This makes the app perfect for serverless deployment on platforms like Vercel.
+
+For local development, you can optionally add file storage back if needed.
 
 ## Development
 
@@ -237,7 +239,7 @@ See **[DEPLOYMENT.md](DEPLOYMENT.md)** for detailed deployment instructions.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nitesh-Nandan/my-mailer)
 
-**Note:** On Vercel, file storage (`contact_submissions/`) won't persist. Email notifications will work fine. For production, consider using a database.
+**Note:** This app is optimized for Vercel - contact submissions are sent via email only (no file storage needed).
 
 ## License
 
