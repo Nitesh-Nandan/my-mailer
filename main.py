@@ -3,6 +3,11 @@ from flask_cors import CORS
 from flasgger import Swagger
 from datetime import datetime
 import os
+import sys
+
+# Add current directory to Python path for Vercel serverless
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from src.services import ContactService
 
 app = Flask(__name__)
