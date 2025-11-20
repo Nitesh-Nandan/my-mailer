@@ -21,19 +21,8 @@ from src.services.contact_service import ContactService
 # Create Flask app
 app = Flask(__name__)
 
-# CORS Configuration - allow your portfolio domain
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "https://my-portfolio-git-main-nitesh-nandans-projects.vercel.app",
-            "https://www.niteshnandan.in"
-        ],
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"],
-        "expose_headers": ["Content-Type"],
-        "supports_credentials": False
-    }
-})
+# CORS Configuration - temporarily allow all for debugging
+CORS(app, origins="*", supports_credentials=False)
 
 # Swagger configuration
 app.config['SWAGGER'] = {
