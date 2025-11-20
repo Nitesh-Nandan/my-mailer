@@ -21,8 +21,13 @@ from src.services.contact_service import ContactService
 # Create Flask app
 app = Flask(__name__)
 
-# CORS Configuration - temporarily allow all for debugging
-CORS(app, origins="*", supports_credentials=False)
+# CORS Configuration - Allow specific origins
+CORS(app, 
+     origins=["https://www.niteshnandan.in", "https://niteshnandan.in", "http://localhost:3000", "http://localhost:5173"],
+     methods=["GET", "POST", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization"],
+     supports_credentials=False,
+     max_age=3600)
 
 # Swagger configuration
 app.config['SWAGGER'] = {
@@ -37,7 +42,7 @@ Swagger(app)
 contact_service = ContactService()
 
 
-@app.route('/api/contact', methods=['POST'])
+@app.route('/api/contact', methods=['POST', 'OPTIONS'])
 def contact_me():
     """Submit contact form
     ---
@@ -75,6 +80,10 @@ def contact_me():
       500:
         description: Server error
     """
+    # Handle preflight OPTIONS request
+    if request.method == 'OPTIONS':
+        return '', 204
+    
     try:
         data = request.get_json()
         if not data:
